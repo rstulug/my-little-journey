@@ -18,7 +18,7 @@ function Button({ btnName, type, size, onClick, to, icon, disabled, title }) {
     yellow:
       " bg-yellow-700 hover:bg-yellow-800   rounded-md  dark:bg-yellow-800 dark:hover:bg-yellow-600 ",
     iconic:
-      " bg-inherit hover:bg-stone-400 dark:hover:bg-neutral-700 rounded-md outline-none",
+      " bg-inherit hover:bg-stone-400 dark:hover:bg-neutral-600 rounded-md outline-none py-2 px-2",
   };
 
   const sizes = {
@@ -33,7 +33,7 @@ function Button({ btnName, type, size, onClick, to, icon, disabled, title }) {
         <button
           disabled={disabled}
           className={styles[type] + sizes[size]}
-          title="title"
+          title={title}
         >
           {icon}
           {btnName}
@@ -46,7 +46,7 @@ function Button({ btnName, type, size, onClick, to, icon, disabled, title }) {
       onClick={onClick}
       disabled={disabled}
       className={styles[type] + sizes[size]}
-      title="title"
+      title={title}
     >
       {icon}
       {btnName}
