@@ -3,13 +3,24 @@ import AppLayout from "./ui/AppLayout";
 import PageNotFound from "./ui/PageNotFound";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
     errorElement: <PageNotFound />,
-    children: [{}],
+    children: [
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "sign-up",
+        element: <SignUp />,
+      },
+    ],
   },
 ]);
 
