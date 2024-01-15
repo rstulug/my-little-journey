@@ -3,7 +3,7 @@ import Spinner from "./Spinner";
 
 function Quote() {
   const { data, error, isLoading } = useQuote();
-  if (isLoading) return <Spinner height={8} width={8} />;
+  if (isLoading) return <Spinner />;
   if (error) return <p>To be or not to be</p>;
   return (
     <div className="flex justify-center items-center flex-col text-md text-center">

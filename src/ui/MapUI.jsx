@@ -1,29 +1,5 @@
-import { useState } from "react";
-import {
-  MapContainer,
-  Marker,
-  Popup,
-  TileLayer,
-  useMapEvent,
-} from "react-leaflet";
-
-function GetPosition() {
-  const [position, setPosition] = useState(null);
-
-  const map = useMapEvent("click", (e) => {
-    setPosition(() => e.latlng);
-    map.setView(e.latlng, 10);
-    //map.setZoom(8);
-  });
-
-  if (!position) return null;
-
-  return (
-    <Marker position={position}>
-      <Popup>deneme</Popup>
-    </Marker>
-  );
-}
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import PutMark from "./PutMark";
 
 function MapUI() {
   return (
@@ -34,7 +10,7 @@ function MapUI() {
         scrollWheelZoom={true}
         className="h-96"
       >
-        <GetPosition />
+        <PutMark />
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
