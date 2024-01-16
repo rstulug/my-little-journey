@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import { LocationProvider } from "./context/LocationContext";
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "sign-up",
+        path: "signup",
         element: <SignUp />,
       },
     ],
@@ -36,7 +37,9 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
-      <RouterProvider router={router} />;
+      <LocationProvider>
+        <RouterProvider router={router} />;
+      </LocationProvider>
     </QueryClientProvider>
   );
 }

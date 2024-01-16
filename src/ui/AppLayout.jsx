@@ -1,6 +1,7 @@
 import Footer from "./Footer";
 import Header from "./Header";
 import MapUI from "./MapUI";
+import MemoryForm from "./MemoryForm";
 
 function AppLayout() {
   return (
@@ -13,7 +14,9 @@ function AppLayout() {
             <div className="h-4/6">
               <MapUI />
             </div>
-            <div className="h-2/6">form burada olacak</div>
+            <div className="h-2/6">
+              <MemoryForm />
+            </div>
           </div>
         </div>
         <div className="fixed bottom-0 left-0 flex h-10 w-full   border-gray-500 bg-stone-200 dark:bg-stone-500 justify-center ">
