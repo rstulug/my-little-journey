@@ -1,21 +1,22 @@
 import Footer from "./Footer";
 import Header from "./Header";
 import MapUI from "./MapUI";
-import MemoryForm from "./MemoryForm";
+
+import UseableArea from "./UseableArea";
 
 function AppLayout() {
   return (
     <div className="w-full bg-stone-200 m-0 font-[monospace] dark:bg-neutral-800 text-slate-700 dark:text-neutral-300 text-md relative">
       <div className="min-h-screen max-w-screen-xl mx-auto flex flex-col">
         <Header />
-        <div className="flex flex-row justify-center">
+        <div className="flex flex-row justify-center overflow-auto mb-10">
           <div className="w-2/6">Sidebar burada olacak</div>
           <div className="flex w-4/6 flex-col gap-4 h-full">
             <div className="h-4/6">
               <MapUI />
             </div>
             <div className="h-2/6">
-              <MemoryForm />
+              <UseableArea />
             </div>
           </div>
         </div>
