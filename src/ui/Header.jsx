@@ -14,7 +14,7 @@ function Header() {
       <div className="flex justify-center items-center gap-4">
         <Button
           to="/login"
-          type="iconic"
+          style="iconic"
           icon={
             <IconContext.Provider value={{ size: "2rem" }}>
               <HiOutlineUser />
@@ -24,7 +24,7 @@ function Header() {
         />
         <Button
           to="/signup"
-          type="iconic"
+          style="iconic"
           icon={
             <IconContext.Provider value={{ size: "2rem" }}>
               <HiMiniPencilSquare />

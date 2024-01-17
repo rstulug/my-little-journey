@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
 
-function Button({ btnName, type, size, onClick, to, icon, disabled, title }) {
+function Button({
+  btnName,
+  type,
+  size,
+  onClick,
+  to,
+  icon,
+  disabled,
+  title,
+  style,
+}) {
   const styles = {
     primary:
       "text-gray-900  bg-white rounded-md border border-gray-200 hover:bg-gray-100 hover:text-blue-700   dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700",
@@ -32,7 +42,8 @@ function Button({ btnName, type, size, onClick, to, icon, disabled, title }) {
       <Link to={to}>
         <button
           disabled={disabled}
-          className={styles[type] + sizes[size]}
+          className={styles[style] + sizes[size]}
+          type={type}
           title={title}
         >
           {icon}
@@ -45,7 +56,7 @@ function Button({ btnName, type, size, onClick, to, icon, disabled, title }) {
     <button
       onClick={onClick}
       disabled={disabled}
-      className={styles[type] + sizes[size]}
+      className={styles[style] + sizes[size]}
       title={title}
     >
       {icon}

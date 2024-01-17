@@ -4,7 +4,7 @@ import { useLocation } from "../context/LocationContext";
 
 function PutMark() {
   const [position, setPosition] = useState(null);
-  const { setLocation } = useLocation();
+  const { setLocation, setIsLoading } = useLocation();
 
   const map = useMapEvent("click", (e) => {
     setPosition(() => e.latlng);
@@ -16,6 +16,7 @@ function PutMark() {
       async function getLocation() {
         try {
           if (!position) return null;
+          setIsLoading(true);
           const res = await fetch(
             `https://api.api-ninjas.com/v1/reversegeocoding?lat=${position.lat}&lon=${position.lng}`,
             {
@@ -31,6 +32,8 @@ function PutMark() {
           setLocation({ ...data[0], ...position });
         } catch (error) {
           throw new Error("Location cannot be accessible");
+        } finally {
+          setIsLoading(false);
         }
       }
       getLocation();

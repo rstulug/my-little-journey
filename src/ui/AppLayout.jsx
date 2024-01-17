@@ -14,13 +14,13 @@ function AppLayout() {
         {outlet ? (
           <Outlet />
         ) : (
-          <div className="flex flex-row justify-center overflow-auto mb-10">
+          <div className="flex flex-row justify-center  mb-10">
             <div className="w-2/6">Sidebar burada olacak</div>
             <div className="flex w-4/6 flex-col gap-4 h-full">
-              <div className="h-4/6">
+              <div>
                 <MapUI />
               </div>
-              <div className="h-2/6">
+              <div className="flex-1">
                 <UseableArea />
               </div>
             </div>

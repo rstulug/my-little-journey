@@ -3,10 +3,13 @@ import { createContext, useContext, useState } from "react";
 const LocationContext = createContext();
 
 function LocationProvider({ children }) {
-  const [location, setLocation] = useState({});
+  const [location, setLocation] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
-    <LocationContext.Provider value={{ location, setLocation }}>
+    <LocationContext.Provider
+      value={{ location, setLocation, isLoading, setIsLoading }}
+    >
       {children}
     </LocationContext.Provider>
   );
