@@ -1,12 +1,25 @@
 import { useQuery } from "@tanstack/react-query";
 
+const types = [
+  "inspirational",
+  "knowledge",
+  "success",
+  "happiness",
+  "freedom",
+  "friendship",
+  "courage",
+  "experience",
+  "change",
+];
+
 export default function useQuote() {
+  const randomNum = Math.floor(Math.random() * types.length + 1);
   const { data, error, isLoading } = useQuery({
     queryKey: ["quote"],
     queryFn: async () => {
       try {
         const res = await fetch(
-          "https://api.api-ninjas.com/v1/quotes?category=",
+          `https://api.api-ninjas.com/v1/quotes?category=${types[randomNum]}`,
           {
             method: "GET",
             headers: {

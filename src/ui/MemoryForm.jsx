@@ -36,7 +36,7 @@ function MemoryForm() {
             type="text"
             id="title"
             className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0"
-            {...register("country", { required: "This field is required" })}
+            {...register("title", { required: "This field is required" })}
           />
         </FormRow>
         <FormRow label="Country" error={errors?.country?.message}>

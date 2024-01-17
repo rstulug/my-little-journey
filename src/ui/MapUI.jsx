@@ -6,7 +6,7 @@ function MapUI() {
     <div className="mt-2">
       <MapContainer
         center={[51.505, -0.09]}
-        zoom={8}
+        zoom={2}
         scrollWheelZoom={true}
         className="h-96"
       >
