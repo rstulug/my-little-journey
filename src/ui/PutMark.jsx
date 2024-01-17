@@ -38,7 +38,7 @@ function PutMark() {
       }
       getLocation();
     },
-    [position, setLocation]
+    [position, setLocation, setIsLoading]
   );
 
   if (!position) return null;
