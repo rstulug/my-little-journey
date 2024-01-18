@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
-import { useLocation } from "../context/LocationContext";
-import Form from "./Form";
-import FormRow from "./FormRow";
+import { useLocation } from "../../context/LocationContext";
+import Form from "../../ui/Form";
+import FormRow from "../../ui/FormRow";
 import { useEffect } from "react";
-import Button from "./Button";
-import Spinner from "./Spinner";
+import Button from "../../ui/Button";
+import Spinner from "../../ui/Spinner";
 
 function MemoryForm() {
   const { location, isLoading } = useLocation();

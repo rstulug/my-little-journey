@@ -1,0 +1,26 @@
+import supabase from "./supabase";
+
+export async function insertMemory(obj) {
+  const { data, error } = await supabase.from("Memory").insert([obj]).select();
+
+  if (error)
+    throw new Error(
+      `An error occured during submit memory. Error: ${error.message}`
+    );
+
+  return data;
+}
+
+export async function getUserMemories(id) {
+  const { data, error } = await supabase
+    .from("Memory")
+    .select("*")
+    .eq("user", id);
+
+  if (error)
+    throw new Error(
+      `An error occured during fetching user memories. Error: ${error.message}`
+    );
+
+  return data;
+}

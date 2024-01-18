@@ -1,4 +1,4 @@
-import MemoryForm from "./MemoryForm";
+import MemoryForm from "../features/Memory/MemoryForm";
 
 function UseableArea() {
   return <MemoryForm />;

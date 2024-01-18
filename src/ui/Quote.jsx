@@ -7,7 +7,9 @@ function Quote() {
   if (error) return <p>To be or not to be</p>;
   return (
     <div className="flex justify-center items-center flex-col text-md text-center">
-      <p>{data[0].quote}</p>
+      <p>
+        {data[0]?.quote ? data[0].quote : "The quote will be here coming soon"}
+      </p>
       <p className=" flex  text-lg justify-end w-full">{data[0].author}</p>
     </div>
   );
