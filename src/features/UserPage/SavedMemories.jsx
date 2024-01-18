@@ -5,7 +5,7 @@ import { useGetUserMemories } from "./useGetUserMemories";
 function SavedMemories() {
   const { user, isLoading: isUserLoading } = useUser();
 
-  const { userMemories, isLoading } = useGetUserMemories(user?.id);
+  const { userMemories, isLoading } = useGetUserMemories({ id: user?.id });
   console.log(userMemories);
 
   if (isLoading || isUserLoading) return <Spinner />;

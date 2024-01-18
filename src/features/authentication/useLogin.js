@@ -8,9 +8,10 @@ export function useLogin() {
   const queryClient = useQueryClient();
   const { mutate: login, status } = useMutation({
     mutationFn: loginApi,
-    onSuccess: (data) => {
-      queryClient.setQueryData(["user"], data.user);
-      navigate(`/user/${data.user.user_metadata.usernameSlug}`);
+    onSuccess: (user) => {
+      queryClient.setQueryData(["user"], { user: user.user });
+
+      navigate(`/user/${user.user.user_metadata.usernameSlug}`);
     },
     onError: () =>
       toast.error(`The email or password is wrong.Please try again`),
