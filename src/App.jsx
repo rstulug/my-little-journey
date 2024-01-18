@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import { LocationProvider } from "./context/LocationContext";
 import { Toaster } from "react-hot-toast";
+import UserPage from "./pages/UserPage";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
       },
       {
         path: "user/:usernameSlug",
-        element: <SignUp />,
+        element: <UserPage />,
       },
     ],
   },

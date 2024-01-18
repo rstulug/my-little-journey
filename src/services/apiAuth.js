@@ -28,3 +28,24 @@ export async function login({ email, password }) {
 
   return data;
 }
+
+export async function logout() {
+  const { error } = await supabase.auth.signOut();
+
+  if (error)
+    throw new Error(`Logout is unsuccessful. The reason: ${error.message}`);
+}
+
+export async function getCurrentUser() {
+  const { data: session } = await supabase.auth.getSession();
+  if (!session.session) return null;
+
+  const { data, error } = await supabase.auth.getUser();
+
+  if (error)
+    throw new Error(
+      `Current user cannot be accessible. Error: ${error.message}`
+    );
+
+  return data;
+}

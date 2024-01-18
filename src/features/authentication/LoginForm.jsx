@@ -14,7 +14,7 @@ function LoginForm() {
   }
 
   return (
-    <Form header="Sign in and enjoy..." onSubmit={handleSubmit(onSubmit)}>
+    <Form header="Login and enjoy..." onSubmit={handleSubmit(onSubmit)}>
       <FormRow label="Email" error={errors?.email?.message}>
         <input
           type="email"
