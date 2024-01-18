@@ -1,8 +1,8 @@
 import Spinner from "../../ui/Spinner";
-import { useUser } from "../../features/authentication/useUser";
+import { useUser } from "../authentication/useUser";
 import { useGetUserMemories } from "./useGetUserMemories";
 
-function OldMemories() {
+function SavedMemories() {
   const { user, isLoading: isUserLoading } = useUser();
 
   const { userMemories, isLoading } = useGetUserMemories(user?.id);
@@ -12,4 +12,4 @@ function OldMemories() {
   return <div></div>;
 }
 
-export default OldMemories;
+export default SavedMemories;
