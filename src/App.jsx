@@ -9,6 +9,7 @@ import { LocationProvider } from "./context/LocationContext";
 import { Toaster } from "react-hot-toast";
 import UserPage from "./pages/UserPage";
 import MemoryForm from "./features/Memory/MemoryForm";
+import MemoryInfo from "./features/Memory/MemoryInfo";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,16 @@ const router = createBrowserRouter([
       {
         path: "user/:usernameSlug",
         element: <UserPage />,
+        children: [
+          {
+            path: "new-memory",
+            element: <MemoryForm />,
+          },
+          {
+            path: "memory/:memoryId",
+            element: <MemoryInfo />,
+          },
+        ],
       },
     ],
   },

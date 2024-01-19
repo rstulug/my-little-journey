@@ -53,7 +53,17 @@ function MemoryForm() {
             id="title"
             disabled={status.pending}
             className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0"
-            {...register("title", { required: "This field is required" })}
+            {...register("title", {
+              required: "This field is required",
+              minLength: {
+                value: 5,
+                message: "Title cannot be lower than 5 characters",
+              },
+              maxLength: {
+                value: 25,
+                message: "Title cannot be higher than 25 characters",
+              },
+            })}
           />
         </FormRow>
         <FormRow label="Country" error={errors?.country?.message}>

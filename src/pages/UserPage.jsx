@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import SavedMemories from "../features/UserPage/SavedMemories";
 import MapUI from "../ui/MapUI";
 
@@ -13,7 +14,7 @@ function UserPage() {
           <MapUI />
         </div>
         <div className="flex-1">
-          <UseableArea />
+          <Outlet />
         </div>
       </div>
     </div>
