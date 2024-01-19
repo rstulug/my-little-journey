@@ -5,7 +5,7 @@ import UseableArea from "../ui/UseableArea";
 function UserPage() {
   return (
     <div className="flex flex-row justify-center  mb-10">
-      <div className="w-2/6">
+      <div className="w-2/6 px-8">
         <SavedMemories />
       </div>
       <div className="flex w-4/6 flex-col gap-4 h-full">

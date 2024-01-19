@@ -5,23 +5,39 @@ import FormRow from "../../ui/FormRow";
 import { useEffect } from "react";
 import Button from "../../ui/Button";
 import Spinner from "../../ui/Spinner";
+import { useInsertMemory } from "./useInsertMemory";
+import { useUser } from "../authentication/useUser";
 
 function MemoryForm() {
   const { location, isLoading } = useLocation();
+  const { user } = useUser();
 
   const { register, handleSubmit, formState, reset } = useForm();
   const { errors } = formState;
 
-  function onSubmit({ country, region, date, withWho, memory }) {
-    console.log(date);
+  const { insertMemory, status } = useInsertMemory();
+
+  function onSubmit({ country, region, date, withWho, memory, title }) {
+    insertMemory({
+      title,
+      country,
+      region,
+      date,
+      withWho,
+      memory,
+      lat: location.lat,
+      lng: location.lng,
+      User: user.id,
+    });
   }
 
   useEffect(
     function () {
       reset();
     },
-    [location, reset]
+    [location, reset, formState.isSubmitSuccessful]
   );
+
   if (isLoading)
     return (
       <div className="flex-1 justify-center mt-5">
@@ -35,6 +51,7 @@ function MemoryForm() {
           <input
             type="text"
             id="title"
+            disabled={status.pending}
             className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0"
             {...register("title", { required: "This field is required" })}
           />
@@ -43,6 +60,7 @@ function MemoryForm() {
           <input
             type="text"
             id="country"
+            disabled={status.pending}
             className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0"
             defaultValue={location.country}
             {...register("country", { required: "This field is required" })}
@@ -52,6 +70,7 @@ function MemoryForm() {
           <input
             type="text"
             id="region"
+            disabled={status.pending}
             className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0"
             defaultValue={location.name}
             {...register("region", { required: "This field is required" })}
@@ -61,6 +80,7 @@ function MemoryForm() {
           <input
             type="date"
             id="date"
+            disabled={status.pending}
             className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0"
             defaultValue={new Date().toJSON().slice(0, 10)}
             {...register("date", { required: "This field is required" })}
@@ -70,6 +90,7 @@ function MemoryForm() {
           <input
             type="text"
             id="withWho"
+            disabled={status.pending}
             className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0"
             {...register("withWho")}
           />
@@ -79,12 +100,19 @@ function MemoryForm() {
             rows="10"
             cols="40"
             id="memory"
+            disabled={status.pending}
             className="w-full text-lg font-semibold focus:outline-0 px-2"
             {...register("memory", { required: "This area is required" })}
           />
         </FormRow>
         <div className="flex justify-end mt-2">
-          <Button type="submit" style="green" size="large" btnName="Submit" />
+          <Button
+            type="submit"
+            style="green"
+            size="large"
+            btnName="Submit"
+            disabled={status.pending}
+          />
         </div>
       </Form>
     );

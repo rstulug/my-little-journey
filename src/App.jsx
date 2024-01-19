@@ -8,6 +8,7 @@ import SignUp from "./pages/SignUp";
 import { LocationProvider } from "./context/LocationContext";
 import { Toaster } from "react-hot-toast";
 import UserPage from "./pages/UserPage";
+import MemoryForm from "./features/Memory/MemoryForm";
 
 const router = createBrowserRouter([
   {

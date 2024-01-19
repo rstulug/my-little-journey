@@ -2,15 +2,15 @@ import useQuote from "../hooks/useQuote";
 import Spinner from "./Spinner";
 
 function Quote() {
-  const { data, error, isLoading } = useQuote();
+  const { data, isLoading } = useQuote();
   if (isLoading) return <Spinner />;
-  if (error) return <p>To be or not to be</p>;
+
+  const quote = data[0].quote || "To be or not to be";
+  const author = data[0].author || "William Shakespeare";
   return (
     <div className="flex justify-center items-center flex-col text-md text-center">
-      <p>
-        {data[0]?.quote ? data[0].quote : "The quote will be here coming soon"}
-      </p>
-      <p className=" flex  text-lg justify-end w-full">{data[0].author}</p>
+      <p>{quote}</p>
+      <p className=" flex  text-lg justify-end w-full">{author}</p>
     </div>
   );
 }
