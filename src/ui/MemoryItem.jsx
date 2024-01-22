@@ -3,7 +3,7 @@ import { useUser } from "../features/authentication/useUser";
 
 function MemoryItem({ memory }) {
   const { user } = useUser();
-  console.log(memory);
+
   return (
     <NavLink
       to={`/user/${user.user_metadata.usernameSlug}/memory/${memory.id}`}

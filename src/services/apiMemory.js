@@ -25,3 +25,20 @@ export async function getUserMemories(id) {
 
   return data;
 }
+
+export async function getUserMemory(id) {
+  if (!id) return null;
+
+  const { data, error } = await supabase
+    .from("Memory")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error)
+    throw new Error(
+      `An error occured during fetching memory data. Error: ${error.message}`
+    );
+
+  return data;
+}
