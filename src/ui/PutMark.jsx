@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Marker, useMapEvent, Popup } from "react-leaflet";
+import { Marker, useMapEvent } from "react-leaflet";
 import { useLocation } from "../context/LocationContext";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../features/authentication/useUser";
@@ -13,6 +13,7 @@ function PutMark() {
   const map = useMapEvent("click", (e) => {
     setPosition(() => e.latlng);
     map.setView(e.latlng);
+
     navigate(`/user/${user.user_metadata.usernameSlug}/new-memory`);
   });
 
@@ -47,11 +48,7 @@ function PutMark() {
   );
 
   if (!position) return null;
-  return (
-    <Marker position={position}>
-      <Popup>deneme</Popup>
-    </Marker>
-  );
+  return <Marker position={position}></Marker>;
 }
 
 export default PutMark;

@@ -1,5 +1,4 @@
 export async function getPosition(position) {
-  console.log(position);
   const { lat, lng } = position;
   console.log(lat, lng);
   try {

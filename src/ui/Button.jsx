@@ -28,7 +28,7 @@ function Button({
     yellow:
       " bg-yellow-700 hover:bg-yellow-800   rounded-md  dark:bg-yellow-800 dark:hover:bg-yellow-600 ",
     iconic:
-      " bg-inherit hover:bg-stone-400 dark:hover:bg-neutral-600 rounded-md outline-none py-2 px-2",
+      " bg-inherit hover:bg-stone-400 dark:hover:bg-neutral-600 rounded-md outline-none py-3 px-2 hover:px-10",
   };
 
   const sizes = {
