@@ -3,6 +3,7 @@ import Button from "../../ui/Button";
 import Spinner from "../../ui/Spinner";
 import { useGetUserMemory } from "./useGetUserMemory";
 import { HiOutlinePencil, HiOutlineTrash } from "react-icons/hi2";
+import Modal from "../../ui/Modal";
 
 function MemoryInfo() {
   const { userMemory, isLoading } = useGetUserMemory();
@@ -32,15 +33,23 @@ function MemoryInfo() {
         </div>
       </div>
       <div className="flex gap-3 mt-2 justify-end w-full mr-2">
-        <Button
-          style="iconic"
-          icon={
-            <IconContext.Provider value={{ size: "2rem" }}>
-              <HiOutlinePencil />
-            </IconContext.Provider>
-          }
-          title="Edit this memory"
-        />
+        <Modal>
+          <Modal.Open open="editMemory">
+            <Button
+              style="iconic"
+              icon={
+                <IconContext.Provider value={{ size: "2rem" }}>
+                  <HiOutlinePencil />
+                </IconContext.Provider>
+              }
+              title="Edit this memory"
+            />
+            <Modal.Window open="editMemory">
+              burası form ile dolacak
+            </Modal.Window>
+          </Modal.Open>
+        </Modal>
+
         <Button
           style="iconic"
           icon={

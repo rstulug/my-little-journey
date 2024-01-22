@@ -9,7 +9,7 @@ function UserPage() {
         <SavedMemories />
       </div>
       <div className="flex w-4/6 flex-col gap-4 h-full">
-        <div>
+        <div className="z-10">
           <MapUI />
         </div>
         <div className=" w-full">

@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import { HiMiniXMark } from "react-icons/hi2";
 import Button from "./Button";
 import { IconContext } from "react-icons";
+import { useOutsideClick } from "../hooks/useOutsideClick";
 
 const ModalContext = createContext();
 
@@ -22,8 +23,7 @@ function Modal({ children }) {
 
 function Open({ children, open: windowsName }) {
   const { open, openName, close } = useContext(ModalContext);
-  function handleClick(e) {
-    e.stopPropagation();
+  function handleClick() {
     openName === "" || openName !== windowsName ? open(windowsName) : close();
   }
   return <div onClick={handleClick}>{children}</div>;
@@ -31,25 +31,36 @@ function Open({ children, open: windowsName }) {
 
 function Window({ children, open: windowsName }) {
   const { openName, close } = useContext(ModalContext);
+  console.log(openName, windowsName);
+
+  const ref = useOutsideClick(close);
 
   if (openName !== windowsName) return null;
 
   return createPortal(
-    <div className="flex justify-center items-center backdrop-blur-lg">
-      <div className="flex justify-end mx-auto">
-        {" "}
-        <Button
-          icon={
-            <IconContext.Provider value={{ size: "2rem" }}>
-              <HiMiniXMark />{" "}
-            </IconContext.Provider>
-          }
-          onClick={() => close()}
-          style="iconic"
-        />
+    <div
+      className="absolute top-0 left-0 bottom-0 right-0 flex justify-center items-center  w-full h-full z-50 m-0 backdrop-blur-md"
+      ref={ref}
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+    >
+      <div className="flex flex-col bg-gray-200">
+        <div className="flex justify-end mx-auto ">
+          <Button
+            icon={
+              <IconContext.Provider value={{ size: "2rem" }}>
+                <HiMiniXMark />
+              </IconContext.Provider>
+            }
+            onClick={() => close()}
+            style="iconic"
+          />
+        </div>
         <div>{children}</div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 
