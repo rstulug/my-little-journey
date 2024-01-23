@@ -12,7 +12,7 @@ export function useUpdateMemory() {
   const { mutate: updateMemory, status } = useMutation({
     mutationFn: updateMemoryApi,
     onSuccess: (data) => {
-      queryClient.invalidateQueries(["user"], user?.id, data[0].id);
+      queryClient.invalidateQueries(["user", user?.id, data[0].id]);
       close();
     },
     onError: (err) => {

@@ -11,7 +11,7 @@ export function useInsertMemory() {
   const { mutate: insertMemory, status } = useMutation({
     mutationFn: insertMemoryApi,
     onSuccess: (data) => {
-      queryClient.invalidateQueries(["user"], user?.id, "savedMemories");
+      queryClient.invalidateQueries(["user", user?.id, "savedMemories"]);
       toast.success("New memory is successfully saved");
       navigate(`/user/${user.user_metadata.usernameSlug}/memory/${data[0].id}`);
     },
