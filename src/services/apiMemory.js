@@ -1,3 +1,4 @@
+import { MEMORY_PER_PAGE } from "../utils/constant";
 import supabase from "./supabase";
 
 export async function insertMemory(obj) {
@@ -11,24 +12,26 @@ export async function insertMemory(obj) {
   return data;
 }
 
-export async function getUserMemories(id) {
-  if (!id) return null;
-  const { data, error } = await supabase
+export async function getUserMemories(id, page) {
+  const from = MEMORY_PER_PAGE * (page - 1);
+  const to = from + MEMORY_PER_PAGE - 1;
+
+  const { data, count, error } = await supabase
     .from("Memory")
-    .select("*")
-    .eq("User", id);
+    .select("*", { count: "exact" })
+    .eq("User", id)
+    .order("created_at", { ascending: true })
+    .range(from, to);
 
   if (error)
     throw new Error(
       `An error occured during fetching user memories. Error: ${error.message}`
     );
 
-  return data;
+  return { data, count };
 }
 
 export async function getUserMemory(id) {
-  if (!id) return null;
-
   const { data, error } = await supabase
     .from("Memory")
     .select("*")
