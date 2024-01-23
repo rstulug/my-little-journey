@@ -12,11 +12,11 @@ export async function insertMemory(obj) {
 }
 
 export async function getUserMemories(id) {
-  if (!id) return null;
   const { data, error } = await supabase
     .from("Memory")
     .select("*")
-    .eq("User", id);
+    .eq("User", id)
+    .order("created_at", { ascending: false });
 
   if (error)
     throw new Error(
@@ -27,8 +27,6 @@ export async function getUserMemories(id) {
 }
 
 export async function getUserMemory(id) {
-  if (!id) return null;
-
   const { data, error } = await supabase
     .from("Memory")
     .select("*")
