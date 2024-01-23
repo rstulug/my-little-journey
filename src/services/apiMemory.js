@@ -42,3 +42,26 @@ export async function getUserMemory(id) {
 
   return data;
 }
+
+export async function deleteMemory(id) {
+  const { error } = await supabase.from("Memory").delete().eq("id", id);
+
+  if (error)
+    throw new Error(
+      `An error occured during deleting memory. Error: ${error.message}`
+    );
+}
+
+export async function updateMemory({ obj, id }) {
+  const { data, error } = await supabase
+    .from("Memory")
+    .update(obj)
+    .eq("id", id)
+    .select();
+
+  if (error)
+    throw new Error(
+      `An error occured during updating memory. Error: ${error.message}`
+    );
+  return data;
+}

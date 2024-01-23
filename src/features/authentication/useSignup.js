@@ -9,7 +9,6 @@ export function useSignup() {
   const { mutate: signUp, status } = useMutation({
     mutationFn: signUpApi,
     onSuccess: (data) => {
-      console.log(data);
       queryClient.setQueryData(["user"], data.user);
       navigate(`/user/${data.user.user_metadata.usernameSlug}`);
     },

@@ -1,7 +1,7 @@
 function FormRow({ label, error, children }) {
   return (
     <div className="font-xl  ml-2 mt-3 flex items-center justify-start border-b-2 border-b-gray-400 py-4 ">
-      <span className=" mr-2 w-1/6 text-lg font-semibold dark:text-stone-200">
+      <span className=" mr-2 w-1/6 text-lg font-semibold dark:text-green-600">
         {label}
       </span>
 

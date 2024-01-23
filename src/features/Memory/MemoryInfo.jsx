@@ -3,10 +3,14 @@ import Button from "../../ui/Button";
 import Spinner from "../../ui/Spinner";
 import { useGetUserMemory } from "./useGetUserMemory";
 import { HiOutlinePencil, HiOutlineTrash } from "react-icons/hi2";
-import Modal from "../../ui/Modal";
+import { Modal } from "../../ui/Modal";
+import ConfirmDelete from "../../ui/ConfirmDelete";
+import { useDeleteMemory } from "./useDeleteMemory";
+import MemoryUpdateForm from "./MemoryUpdateForm";
 
 function MemoryInfo() {
   const { userMemory, isLoading } = useGetUserMemory();
+  const { deleteMemory, status } = useDeleteMemory();
 
   if (isLoading) return <Spinner />;
   return (
@@ -44,21 +48,27 @@ function MemoryInfo() {
               }
               title="Edit this memory"
             />
-            <Modal.Window open="editMemory">
-              burası form ile dolacak
-            </Modal.Window>
           </Modal.Open>
+          <Modal.Window open="editMemory">
+            <MemoryUpdateForm memory={userMemory} />
+          </Modal.Window>
         </Modal>
-
-        <Button
-          style="iconic"
-          icon={
-            <IconContext.Provider value={{ size: "2rem" }}>
-              <HiOutlineTrash />
-            </IconContext.Provider>
-          }
-          title="Delete this memory"
-        />
+        <Modal>
+          <Modal.Open open="deleteMemory">
+            <Button
+              style="iconic"
+              icon={
+                <IconContext.Provider value={{ size: "2rem" }}>
+                  <HiOutlineTrash />
+                </IconContext.Provider>
+              }
+              title="Delete this memory"
+            />
+          </Modal.Open>
+          <Modal.Window open="deleteMemory">
+            <ConfirmDelete onClick={() => deleteMemory(userMemory.id)} />
+          </Modal.Window>
+        </Modal>
       </div>
     </div>
   );
