@@ -1,8 +1,26 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import SavedMemories from "../features/UserPage/SavedMemories";
 import MapUI from "../ui/MapUI";
+import { useUser } from "../features/authentication/useUser";
+import { useEffect } from "react";
 
 function UserPage() {
+  const { usernameSlug } = useParams();
+  const { user, isLoading } = useUser();
+  const navigate = useNavigate();
+
+  useEffect(
+    function () {
+      if (
+        !isLoading &&
+        user &&
+        usernameSlug !== user.user_metadata.usernameSlug
+      )
+        navigate(`/user/${user.user_metadata.usernameSlug}`);
+    },
+    [user, isLoading, usernameSlug, navigate]
+  );
+
   return (
     <div className="flex flex-row justify-center  mb-10">
       <div className="w-2/6 px-8">

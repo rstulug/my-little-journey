@@ -10,7 +10,7 @@ import MemoryUpdateForm from "./MemoryUpdateForm";
 
 function MemoryInfo() {
   const { userMemory, isLoading } = useGetUserMemory();
-  const { deleteMemory, status } = useDeleteMemory();
+  const { deleteMemory } = useDeleteMemory();
 
   if (isLoading) return <Spinner />;
   return (

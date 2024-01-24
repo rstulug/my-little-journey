@@ -27,6 +27,7 @@ export async function getUserMemories(id) {
 }
 
 export async function getUserMemory(id) {
+  if (!id) return null;
   const { data, error } = await supabase
     .from("Memory")
     .select("*")
