@@ -28,7 +28,7 @@ function Pagination({ lastPage, setCurPage, curPage }) {
         <select
           value={curPage}
           onChange={handleChange}
-          className="rounded-md bg-green-200 dark:bg-stone-600"
+          className="rounded-md bg-sky-200 dark:bg-stone-600"
         >
           {Array.from({ length: lastPage }, (v, i) => i + 1).map((page) => (
             <option value={page} key={page}>

@@ -15,23 +15,24 @@ function MemoryInfo() {
   if (isLoading) return <Spinner />;
   return (
     <div className="flex justify-center flex-col items-center w-5/6 mx-auto">
-      <div className="font-bold text-2xl dark:text-green-600 mb-3">
+      <div className="font-bold text-2xl  mb-3 text-green-600">
         {userMemory.title}
       </div>
       <div>
-        <div className="font-semibold text-xl">
-          You visited {userMemory.country} - {userMemory.region}{" "}
+        <div className="font-semibold text-xl ">
+          You visited{" "}
+          <span className="text-green-600">
+            {userMemory.country} - {userMemory.region}{" "}
+          </span>
           {userMemory.withWho ? "with " : "alone"}
-          <span className="dark:text-green-600">
-            {userMemory.withWho}
-          </span> at{" "}
-          <span className="dark:text-green-600">{userMemory.date}</span>
+          <span className="text-green-600">{userMemory.withWho}</span> at{" "}
+          <span className="text-green-600">{userMemory.date}</span>
         </div>
         <div>
           <h2 className="my-4 text-xl font-semibold">
             Your reviews for this memory:{" "}
           </h2>
-          <div className="flex justify-start border-2 shadow-md rounded-md py-3 text-xl px-2 italic dark:shadow-slate-400">
+          <div className="flex justify-start border-2 shadow-md rounded-md py-3 text-xl px-2 italic dark:shadow-slate-400 shadow-sky-700 border-gray-500">
             {userMemory.memory}
           </div>
         </div>
