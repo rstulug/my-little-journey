@@ -10,6 +10,8 @@ import Quote from "./Quote";
 import { useUser } from "../features/authentication/useUser";
 import { useLogout } from "../features/authentication/useLogout";
 import { Link } from "react-router-dom";
+import { useDarkMode } from "../hooks/useDarkMode";
+import DarkModeIcon from "./DarkModeIcon";
 
 function Header() {
   const { user, isLoading } = useUser();
@@ -21,14 +23,16 @@ function Header() {
       <div className="hidden md:flex md:w-4/6">
         <Quote />
       </div>
+      <div className="flex justify-center items-center mr-1">
+        <DarkModeIcon />
+      </div>
       {user && !isLoading ? (
         <div className="flex justify-center items-center gap-4">
           <Link
             className="text-lg font-semibold text-wrap"
             to={`/user/${user.user_metadata.usernameSlug}`}
           >
-            {" "}
-            Welcome {user.user_metadata.username}
+            {user.user_metadata.username}
           </Link>
 
           <Button
