@@ -24,7 +24,7 @@ function SignupForm() {
         <input
           type="email"
           id="email"
-          className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0"
+          className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0 border-gray-900 border-2 "
           {...register("email", {
             required: "This field is required",
             pattern: {
@@ -38,7 +38,7 @@ function SignupForm() {
         <input
           type="password"
           id="password"
-          className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0"
+          className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0 border-gray-900 border-2 "
           disabled={status.pending}
           {...register("password", {
             required: "This field is required",
@@ -53,7 +53,7 @@ function SignupForm() {
         <input
           type="password"
           id="password2"
-          className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0"
+          className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0 border-gray-900 border-2 "
           disabled={status.pending}
           {...register("password2", {
             required: "This field is required",
@@ -66,7 +66,7 @@ function SignupForm() {
         <input
           type="text"
           id="username"
-          className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0"
+          className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0 border-gray-900 border-2 "
           disabled={status.pending}
           {...register("username", {
             required: "This field is required",

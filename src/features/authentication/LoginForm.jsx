@@ -19,7 +19,7 @@ function LoginForm() {
         <input
           type="email"
           id="email"
-          className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0"
+          className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0 border-gray-900 border-2 "
           disabled={status.pending}
           {...register("email", {
             required: "This field is required",
@@ -35,7 +35,7 @@ function LoginForm() {
           type="password"
           id="password"
           disabled={status.pending}
-          className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0"
+          className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0 border-gray-900 border-2 "
           {...register("password", {
             required: "This field is required",
             minLength: {

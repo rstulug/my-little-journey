@@ -52,7 +52,7 @@ function MemoryForm() {
             type="text"
             id="title"
             disabled={status.pending}
-            className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0"
+            className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0 border-gray-900 border-2 "
             {...register("title", {
               required: "This field is required",
               minLength: {
@@ -71,7 +71,7 @@ function MemoryForm() {
             type="text"
             id="country"
             disabled={status.pending}
-            className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0"
+            className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0 border-gray-900 border-2 "
             defaultValue={location.country}
             {...register("country", { required: "This field is required" })}
           />
@@ -81,7 +81,7 @@ function MemoryForm() {
             type="text"
             id="region"
             disabled={status.pending}
-            className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0"
+            className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0 border-gray-900 border-2 "
             defaultValue={location.name}
             {...register("region", { required: "This field is required" })}
           />
@@ -91,7 +91,7 @@ function MemoryForm() {
             type="date"
             id="date"
             disabled={status.pending}
-            className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0"
+            className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0 border-gray-900 border-2 "
             defaultValue={new Date().toJSON().slice(0, 10)}
             {...register("date", { required: "This field is required" })}
           />
@@ -101,7 +101,7 @@ function MemoryForm() {
             type="text"
             id="withWho"
             disabled={status.pending}
-            className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0"
+            className="text-lg w-full rounded-lg font-semibold px-3 focus:outline-0 border-gray-900 border-2 "
             {...register("withWho")}
           />
         </FormRow>
@@ -111,7 +111,7 @@ function MemoryForm() {
             cols="40"
             id="memory"
             disabled={status.pending}
-            className="w-full text-lg font-semibold focus:outline-0 px-2"
+            className="w-full text-lg font-semibold focus:outline-0 px-2 border-gray-900 border-2 0"
             {...register("memory", { required: "This area is required" })}
           />
         </FormRow>

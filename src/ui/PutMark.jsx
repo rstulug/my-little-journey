@@ -37,7 +37,7 @@ function PutMark() {
           const data = await res.json();
           setLocation({ ...data[0], ...position });
         } catch (error) {
-          throw new Error("Location cannot be accessible");
+          throw new Error(`Location cannot be accessible. Error: ${error}`);
         } finally {
           setIsLoading(false);
         }

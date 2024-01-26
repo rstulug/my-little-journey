@@ -9,8 +9,8 @@ function MemoryItem({ memory }) {
       to={`/user/${user.user_metadata.usernameSlug}/memory/${memory.id}`}
       className={({ isActive }) =>
         isActive
-          ? " items-center rounded-xl bg-sky-300 px-2 dark:bg-emerald-700 w-5/6 text-center  text-lg font-semibold py-2"
-          : "items-center  hover:rounded-xl hover:bg-sky-200  dark:hover:bg-emerald-400 w-5/6 text-center py-2 text-lg hover:text-black font-semibold"
+          ? " items-center rounded-xl bg-sky-800 px-2 dark:bg-emerald-700 w-5/6 text-center  text-lg font-semibold py-2 text-black"
+          : "items-center  hover:rounded-xl hover:bg-sky-500  dark:hover:bg-emerald-400 w-5/6 text-center py-2 text-lg hover:text-black font-semibold"
       }
     >
       <div>{memory.title}</div>
