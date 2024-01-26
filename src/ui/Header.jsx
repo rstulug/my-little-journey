@@ -10,7 +10,7 @@ import Quote from "./Quote";
 import { useUser } from "../features/authentication/useUser";
 import { useLogout } from "../features/authentication/useLogout";
 import { Link } from "react-router-dom";
-import { useDarkMode } from "../hooks/useDarkMode";
+
 import DarkModeIcon from "./DarkModeIcon";
 
 function Header() {
