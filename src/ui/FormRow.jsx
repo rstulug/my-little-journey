@@ -6,7 +6,7 @@ function FormRow({ label, error, children }) {
       </span>
 
       <span className=" rounded-xl shadow-xl  text-gray-800">{children}</span>
-      <span className="font-italic w-2/6 text-center text-xl font-medium text-red-700 dark:text-red-600">
+      <span className="font-italic w-2/6 text-center text-xl font-medium text-pink-400 ">
         {error}
       </span>
     </div>

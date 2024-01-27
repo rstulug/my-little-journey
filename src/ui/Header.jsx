@@ -18,7 +18,7 @@ function Header() {
   return (
     <div className="border-gray-500 border-b-2 pb-2 flex flex-col justify-between sm:flex-row">
       <Logo />
-      <div className="hidden md:flex md:w-4/6">
+      <div className="hidden md:flex  md:justify-center">
         <Quote />
       </div>
 
