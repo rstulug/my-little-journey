@@ -6,14 +6,18 @@ import Dashboard from "../pages/Dashboard";
 
 function AppLayout() {
   const outlet = useOutlet();
+
   return (
     <div
       className="  m-0 font-[monospace]  text-neutral-100 text-md relative w-auto overflow-x-scroll min-h-screen "
       style={{
-        backgroundImage:
-          "linear-gradient(rgba(31, 28, 31, 0.651), rgba(73, 68, 68, 0.658)),url('/public/memory_map.jpg')",
+        backgroundImage: `linear-gradient(rgba(53, 52, 53, 0.938), rgba(15, 15, 15, 0.822)),url(${
+          outlet ? "/memory_map.jpg" : "/save_your_memories.jpg"
+        })
+        `,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
+        backgroundPosition: "center center",
       }}
     >
       <div className=" max-w-screen-xl mx-auto flex flex-col">
