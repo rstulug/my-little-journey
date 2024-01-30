@@ -42,7 +42,7 @@ function Carousel({ images }) {
   );
 
   return (
-    <div className="overflow-hidden relative">
+    <div className="overflow-hidden relative w-72">
       <div
         className={`flex transition ease-out duration-700`}
         style={{ transform: `translateX(-${current * 100}%)` }}
@@ -62,12 +62,12 @@ function Carousel({ images }) {
       </div>
       <div className="absolute top-0 h-full w-full justify-between items-center flex text-black text-xl px-2">
         <button onClick={handlePrevious}>
-          <IconContext.Provider value={{ size: "2rem" }}>
+          <IconContext.Provider value={{ size: "1.5rem" }}>
             <HiOutlineArrowLeftCircle />
           </IconContext.Provider>
         </button>
         <button onClick={handleNext}>
-          <IconContext.Provider value={{ size: "2rem" }}>
+          <IconContext.Provider value={{ size: "1.5rem" }}>
             <HiOutlineArrowRightCircle />
           </IconContext.Provider>
         </button>
@@ -77,8 +77,8 @@ function Carousel({ images }) {
           return (
             <div
               onClick={() => setCurrent(i)}
-              className={`rounded-full w-5 h-5 cursor-pointer ${
-                i === current ? "bg-white" : "bg-gray-500"
+              className={`rounded-full w-3 h-3 cursor-pointer ${
+                i === current ? "bg-white" : "bg-gray-700"
               }`}
               key={"circle" + i}
             ></div>
