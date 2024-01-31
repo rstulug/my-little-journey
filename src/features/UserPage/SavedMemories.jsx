@@ -33,7 +33,7 @@ function SavedMemories() {
       <h2 className="text-bold text-center text-2xl border-2 border-gray-200 mt-5 rounded-lg py-4 text-amber-600 ">
         Your Memories
       </h2>
-      <ul className="flex justify-center items-center gap-4 flex-col mt-6">
+      <ul className="flex justify-center items-center gap-2 flex-col mt-6">
         {paginatedMemories.map((memory) => (
           <MemoryItem memory={memory} key={memory.id} />
         ))}

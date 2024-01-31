@@ -16,7 +16,7 @@ function MapUI() {
         center={[51.505, -0.09]}
         zoom={2}
         scrollWheelZoom={true}
-        className="h-96"
+        className="md:h-96 h-72 w-[80%] flex justify-center mx-auto "
       >
         <PutMark />
         {userMemories &&
