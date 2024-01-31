@@ -18,12 +18,12 @@ function Header() {
   return (
     <div className="border-gray-500 border-b-2 pb-2 flex flex-col justify-between sm:flex-row">
       <Logo />
-      <div className="hidden md:flex  md:justify-center">
+      <div className="hidden md:flex  md:justify-center mx-8">
         <Quote />
       </div>
 
       {user && !isLoading ? (
-        <div className="flex justify-center items-center gap-4">
+        <div className="flex justify-center items-center gap-4 ml-4">
           <Link
             className="text-lg font-semibold text-wrap"
             to={`/user/${user.user_metadata.usernameSlug}`}
