@@ -16,56 +16,59 @@ function Header() {
   const { logout } = useLogout();
 
   return (
-    <div className="border-gray-500 border-b-2 pb-2 flex flex-col justify-between sm:flex-row">
-      <Logo />
-      <div className="hidden md:flex  md:justify-center mx-8">
+    <div className="border-gray-500 border-b-2 pb-2 flex flex-col justify-between sm:flex-row gap-6 items-center">
+      <div>
+        <Logo />
+      </div>
+      <div className="hidden md:flex  md:justify-center md:items-center md:w-[80%] md:mx-auto">
         <Quote />
       </div>
+      <div>
+        {user && !isLoading ? (
+          <div className="flex justify-center items-center ">
+            <Link
+              className="text-lg font-semibold text-wrap"
+              to={`/user/${user.user_metadata.usernameSlug}`}
+            >
+              {user.user_metadata.username}
+            </Link>
 
-      {user && !isLoading ? (
-        <div className="flex justify-center items-center gap-4 ml-4">
-          <Link
-            className="text-lg font-semibold text-wrap"
-            to={`/user/${user.user_metadata.usernameSlug}`}
-          >
-            {user.user_metadata.username}
-          </Link>
-
-          <Button
-            onClick={() => logout()}
-            style="iconic"
-            icon={
-              <IconContext.Provider value={{ size: "2rem" }}>
-                <HiArrowRightOnRectangle />
-              </IconContext.Provider>
-            }
-            title="Sign up"
-          />
-        </div>
-      ) : (
-        <div className="flex justify-center items-center gap-4">
-          <Button
-            to="/login"
-            style="iconic"
-            icon={
-              <IconContext.Provider value={{ size: "2rem" }}>
-                <HiOutlineUser />
-              </IconContext.Provider>
-            }
-            title="Sign in"
-          />
-          <Button
-            to="/signup"
-            style="iconic"
-            icon={
-              <IconContext.Provider value={{ size: "2rem" }}>
-                <HiMiniPencilSquare />
-              </IconContext.Provider>
-            }
-            title="Sign up"
-          />
-        </div>
-      )}
+            <Button
+              onClick={() => logout()}
+              style="iconic"
+              icon={
+                <IconContext.Provider value={{ size: "2rem" }}>
+                  <HiArrowRightOnRectangle />
+                </IconContext.Provider>
+              }
+              title="Sign up"
+            />
+          </div>
+        ) : (
+          <div className="flex justify-center items-center gap-3">
+            <Button
+              to="/login"
+              style="iconic"
+              icon={
+                <IconContext.Provider value={{ size: "2rem" }}>
+                  <HiOutlineUser />
+                </IconContext.Provider>
+              }
+              title="Sign in"
+            />
+            <Button
+              to="/signup"
+              style="iconic"
+              icon={
+                <IconContext.Provider value={{ size: "2rem" }}>
+                  <HiMiniPencilSquare />
+                </IconContext.Provider>
+              }
+              title="Sign up"
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 }

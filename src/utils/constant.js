@@ -1,1 +1,1 @@
-export const MEMORY_PER_PAGE = 2;
+export const MEMORY_PER_PAGE = 5;

@@ -17,7 +17,12 @@ function SignUp() {
   );
   if (isLoading) return <Spinner />;
 
-  if (!user) return <SignupForm />;
+  if (!user)
+    return (
+      <div className=" mx-auto shadow-lg shadow-sky-500 py-7 my-20 w-[80%] px-4 ">
+        <SignupForm />
+      </div>
+    );
 }
 
 export default SignUp;

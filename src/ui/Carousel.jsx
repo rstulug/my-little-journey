@@ -5,7 +5,7 @@ import {
   HiOutlineArrowRightCircle,
 } from "react-icons/hi2";
 
-function Carousel({ images }) {
+function Carousel({ images, aspect }) {
   const [current, setCurrent] = useState(0);
   const [mouseOver, setMouseOver] = useState(true);
 
@@ -42,10 +42,12 @@ function Carousel({ images }) {
   );
 
   return (
-    <div className="overflow-hidden relative">
+    <div className="overflow-hidden relative  rounded-2xl ">
       <div
         className={`flex transition ease-out duration-700`}
-        style={{ transform: `translateX(-${current * 100}%)` }}
+        style={{
+          transform: `translateX(-${current * 100}%)`,
+        }}
         onMouseOver={() => setMouseOver(false)}
         onMouseOut={() => setMouseOver(true)}
       >
@@ -55,12 +57,12 @@ function Carousel({ images }) {
               src={image}
               alt="dashboard images"
               key={image}
-              className="rounded-xl"
+              style={{ aspectRatio: aspect ? aspect : "auto" }}
             />
           );
         })}
       </div>
-      <div className="absolute top-0 h-full w-full justify-between items-center flex text-black text-xl px-2">
+      <div className="absolute top-0 h-full w-full justify-between items-center flex text-black text-xl px-2  ">
         <button onClick={handlePrevious}>
           <IconContext.Provider value={{ size: "2rem" }}>
             <HiOutlineArrowLeftCircle />
@@ -77,8 +79,8 @@ function Carousel({ images }) {
           return (
             <div
               onClick={() => setCurrent(i)}
-              className={`rounded-full w-5 h-5 cursor-pointer ${
-                i === current ? "bg-white" : "bg-gray-500"
+              className={`rounded-full w-3 h-3 cursor-pointer ${
+                i === current ? "bg-white" : "bg-gray-700"
               }`}
               key={"circle" + i}
             ></div>
