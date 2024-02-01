@@ -1,3 +1,4 @@
+import path from "path";
 import supabase from "./supabase";
 
 export async function insertMemory(obj) {
@@ -62,5 +63,31 @@ export async function updateMemory({ obj, id }) {
     throw new Error(
       `An error occured during updating memory. Error: ${error.message}`
     );
+  return data;
+}
+
+export async function insertMemoryImages(images) {
+  if (images.length > 0) {
+    for (const image of images) {
+      const { error: imageError } = await supabase.storage
+        .from("images")
+        .upload(image.imageNames, image.imageFile);
+
+      if (imageError)
+        throw new Error(
+          `An error occured during uploading images. Image-Error:${imageError.message}`
+        );
+    }
+  }
+}
+
+export async function getMemoryImages(folder) {
+  const { data, error } = await supabase.storage.from("images").list();
+
+  if (error)
+    throw new Error(
+      `An error occured during fetching images. Error: ${error.message}`
+    );
+
   return data;
 }

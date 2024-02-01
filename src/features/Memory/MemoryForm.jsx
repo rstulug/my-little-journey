@@ -115,17 +115,9 @@ function MemoryForm() {
             {...register("memory", { required: "This area is required" })}
           />
         </FormRow>
-        <FormRow label="Images" error={errors?.memoryImages?.message}>
-          <input
-            type="file"
-            id="memoryImages"
-            multiple
-            accept="image/*"
-            // accept=".jpg, .jpeg, .png"
-            className="w-full text-lg font-semibold focus:outline-0  border-gray-900 border-2 text-black rounded-md bg-white"
-            {...register("memoryImages")}
-          />
-        </FormRow>
+        <div className="flex justify-center items-center text-lg">
+          *You can add images after saving your memory
+        </div>
         <div className="flex justify-end mt-2">
           <Button
             type="submit"
