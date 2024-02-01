@@ -13,7 +13,8 @@ import Carousel from "../../ui/Carousel";
 import { Modal } from "../../ui/Modal";
 
 function MemoryImages() {
-  const { register, handleSubmit, formState, setError, reset } = useForm();
+  const { register, handleSubmit, formState, setError, reset, clearErrors } =
+    useForm();
   const { errors } = formState;
 
   const { user } = useUser();
@@ -21,9 +22,13 @@ function MemoryImages() {
   const { data, isLoading } = useGetUserMemoryImages();
   const { insertImages, status } = useInsertMemoryImages();
 
-  useEffect(function () {
-    if (formState.isSubmitSuccessful) reset();
-  });
+  useEffect(
+    function () {
+      if (formState.isSubmitSuccessful) reset();
+      clearErrors("memoryImages");
+    },
+    [formState.isSubmitSuccessful, clearErrors, reset, memoryId]
+  );
 
   const images =
     data && data.length > 0
@@ -39,11 +44,14 @@ function MemoryImages() {
       : [];
 
   function onSubmit({ memoryImages }) {
-    if (memoryImages.length === 0 || memoryImages.length + images.length > 5) {
+    if (
+      (memoryImages && memoryImages.length === 0) ||
+      memoryImages.length + images.length > 5
+    ) {
       setError(
         "memoryImages",
         { type: "maxLength", message: "Maximum 5 images can be uploaded" },
-        { shouldFocus: true }
+        { shouldFocus: false }
       );
     } else {
       const imageFiles = memoryImages
