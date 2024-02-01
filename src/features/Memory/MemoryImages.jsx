@@ -9,6 +9,8 @@ import Button from "../../ui/Button";
 import Spinner from "../../ui/Spinner";
 import { useEffect } from "react";
 import { useGetUserMemoryImages } from "./useGetMemoryImages";
+import Carousel from "../../ui/Carousel";
+import { Modal } from "../../ui/Modal";
 
 function MemoryImages() {
   const { register, handleSubmit, formState, setError, reset } = useForm();
@@ -19,31 +21,43 @@ function MemoryImages() {
   const { data, isLoading } = useGetUserMemoryImages();
   const { insertImages, status } = useInsertMemoryImages();
 
-  console.log(data, isLoading);
+  useEffect(function () {
+    if (formState.isSubmitSuccessful) reset();
+  });
+
+  const images =
+    data && data.length > 0
+      ? data.map(
+          (image) =>
+            "https://bxezmnvpntsmpijizrlm.supabase.co/storage/v1/object/public/images/" +
+            user.id +
+            "/" +
+            memoryId +
+            "/" +
+            image.name
+        )
+      : [];
 
   function onSubmit({ memoryImages }) {
-    if (memoryImages.length > 5)
+    if (memoryImages.length === 0 || memoryImages.length + images.length > 5) {
       setError(
         "memoryImages",
         { type: "maxLength", message: "Maximum 5 images can be uploaded" },
         { shouldFocus: true }
       );
-    const images = memoryImages
-      ? Object.keys(memoryImages).map((image, i) => {
-          return {
-            imageNames:
-              user.id + "/" + memoryId + "/" + i.toString() + "_" + uuidv4(),
-            imageFile: memoryImages[i],
-          };
-        })
-      : [];
-
-    insertImages(images);
+    } else {
+      const imageFiles = memoryImages
+        ? Object.keys(memoryImages).map((image, i) => {
+            return {
+              imageNames:
+                user.id + "/" + memoryId + "/" + i.toString() + "_" + uuidv4(),
+              imageFile: memoryImages[i],
+            };
+          })
+        : [];
+      insertImages(imageFiles);
+    }
   }
-
-  useEffect(function () {
-    if (formState.isSubmitSuccessful) reset();
-  });
 
   if (!user || !memoryId) return null;
   if (status === "pending" || isLoading)
@@ -54,28 +68,43 @@ function MemoryImages() {
     );
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <FormRow label=" Add Images" error={errors?.memoryImages?.message}>
-        <input
-          type="file"
-          id="memoryImages"
-          multiple
-          accept="image/*"
-          // accept=".jpg, .jpeg, .png"
-          className="w-full text-lg font-semibold focus:outline-0  border-gray-900 border-2 text-black rounded-md bg-white"
-          {...register("memoryImages")}
-        />
-      </FormRow>
-      <div className="flex justify-end mt-2">
-        <Button
-          type="submit"
-          style="green"
-          size="large"
-          btnName="Submit"
-          disabled={status.pending}
-        />
-      </div>
-    </Form>
+    <div>
+      {images.length > 0 && (
+        <Modal>
+          <Modal.Open open="images">
+            <Carousel images={images} />
+          </Modal.Open>
+          <Modal.Window open="images">
+            <Carousel images={images} />
+          </Modal.Window>
+        </Modal>
+      )}
+
+      {images.length < 6 && (
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          <FormRow label=" Add Images" error={errors?.memoryImages?.message}>
+            <input
+              type="file"
+              id="memoryImages"
+              multiple
+              accept="image/*"
+              // accept=".jpg, .jpeg, .png"
+              className="w-full text-lg font-semibold focus:outline-0  border-gray-900 border-2 text-black rounded-md bg-white"
+              {...register("memoryImages")}
+            />
+          </FormRow>
+          <div className="flex justify-end mt-2">
+            <Button
+              type="submit"
+              style="green"
+              size="large"
+              btnName="Submit"
+              disabled={status.pending}
+            />
+          </div>
+        </Form>
+      )}
+    </div>
   );
 }
 

@@ -81,8 +81,10 @@ export async function insertMemoryImages(images) {
   }
 }
 
-export async function getMemoryImages(folder) {
-  const { data, error } = await supabase.storage.from("images").list();
+export async function getMemoryImages(folder, path) {
+  const { data, error } = await supabase.storage
+    .from("images")
+    .list(folder, { path: path });
 
   if (error)
     throw new Error(

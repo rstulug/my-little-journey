@@ -9,7 +9,8 @@ export function useGetUserMemoryImages() {
 
   const { data, isLoading } = useQuery({
     queryKey: ["images", user?.id, memoryId],
-    queryFn: () => getMemoryImages((user?.id + "/" + memoryId).toString()),
+    queryFn: () =>
+      getMemoryImages(user?.id.toString() + "/" + memoryId.toString()),
   });
 
   return { data, isLoading };

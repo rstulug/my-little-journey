@@ -9,7 +9,7 @@ function AppLayout() {
 
   return (
     <div
-      className=" m-0 font-[monospace]  text-neutral-100 text-md relative w-auto overflow-x-scroll min-h-screen"
+      className=" m-0 font-[monospace]  text-neutral-100 text-md relative w-auto overflow-x-scroll h-screen"
       style={{
         backgroundImage: `linear-gradient(rgba(53, 52, 53, 0.938), rgba(15, 15, 15, 0.822)),url(${
           outlet ? "/memory_map.jpg" : "/save_your_memories.jpg"
