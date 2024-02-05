@@ -42,9 +42,9 @@ function Carousel({ images, aspect }) {
   );
 
   return (
-    <div className="overflow-hidden relative  rounded-2xl ">
+    <div className="overflow-hidden relative  rounded-2xl h-96 w-full">
       <div
-        className={`flex transition ease-out duration-700`}
+        className={`flex transition ease-out duration-700 `}
         style={{
           transform: `translateX(-${current * 100}%)`,
         }}
@@ -57,7 +57,8 @@ function Carousel({ images, aspect }) {
               src={image}
               alt="dashboard images"
               key={image}
-              style={{ aspectRatio: aspect ? aspect : "auto" }}
+              //style={{ aspectRatio: aspect ? aspect : "auto" }}
+              className="object-fit min-w-full"
             />
           );
         })}

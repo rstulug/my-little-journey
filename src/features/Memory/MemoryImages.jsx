@@ -77,16 +77,7 @@ function MemoryImages() {
 
   return (
     <div>
-      {images.length > 0 && (
-        <Modal>
-          <Modal.Open open="images">
-            <Carousel images={images} />
-          </Modal.Open>
-          <Modal.Window open="images">
-            <Carousel images={images} />
-          </Modal.Window>
-        </Modal>
-      )}
+      {images.length > 0 && <Carousel images={images} />}
 
       {images.length < 6 && (
         <Form onSubmit={handleSubmit(onSubmit)}>

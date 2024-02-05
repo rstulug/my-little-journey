@@ -1,4 +1,3 @@
-import path from "path";
 import supabase from "./supabase";
 
 export async function insertMemory(obj) {
