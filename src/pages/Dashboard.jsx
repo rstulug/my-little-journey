@@ -38,7 +38,7 @@ function Dashboard() {
         </div>
       </div>
       <div className="w-[50%] mx-auto mt-2">
-        <Carousel images={images} aspect="9 / 5" />
+        <Carousel images={images} imageHeight="24rem" />
       </div>
     </div>
   );

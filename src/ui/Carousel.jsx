@@ -5,7 +5,7 @@ import {
   HiOutlineArrowRightCircle,
 } from "react-icons/hi2";
 
-function Carousel({ images, aspect }) {
+function Carousel({ images, imageHeight }) {
   const [current, setCurrent] = useState(0);
   const [mouseOver, setMouseOver] = useState(true);
 
@@ -42,11 +42,12 @@ function Carousel({ images, aspect }) {
   );
 
   return (
-    <div className="overflow-hidden relative  rounded-2xl h-96 w-full">
+    <div className="overflow-hidden relative  rounded-2xl w-full">
       <div
         className={`flex transition ease-out duration-700 `}
         style={{
           transform: `translateX(-${current * 100}%)`,
+          height: `${imageHeight}`,
         }}
         onMouseOver={() => setMouseOver(false)}
         onMouseOut={() => setMouseOver(true)}
@@ -58,12 +59,12 @@ function Carousel({ images, aspect }) {
               alt="dashboard images"
               key={image}
               //style={{ aspectRatio: aspect ? aspect : "auto" }}
-              className="object-fit min-w-full"
+              className="min-w-full object-scale-down"
             />
           );
         })}
       </div>
-      <div className="absolute top-0 h-full w-full justify-between items-center flex text-black text-xl px-2  ">
+      <div className="absolute top-0 h-full w-full justify-between items-center flex text-white text-xl px-2  ">
         <button onClick={handlePrevious}>
           <IconContext.Provider value={{ size: "2rem" }}>
             <HiOutlineArrowLeftCircle />

@@ -11,6 +11,10 @@ import { useEffect } from "react";
 import { useGetUserMemoryImages } from "./useGetMemoryImages";
 import Carousel from "../../ui/Carousel";
 import { Modal } from "../../ui/Modal";
+import { HiArrowsPointingOut, HiOutlineTrash } from "react-icons/hi2";
+import { IconContext } from "react-icons";
+import ConfirmDelete from "../../ui/ConfirmDelete";
+import { useDeleteMemoryImage } from "./useDeleteMemoryImage";
 
 function MemoryImages() {
   const { register, handleSubmit, formState, setError, reset, clearErrors } =
@@ -21,6 +25,7 @@ function MemoryImages() {
   const { memoryId } = useParams();
   const { data, isLoading } = useGetUserMemoryImages();
   const { insertImages, status } = useInsertMemoryImages();
+  const { deleteMemoryImage, deleteStatus } = useDeleteMemoryImage();
 
   useEffect(
     function () {
@@ -77,9 +82,60 @@ function MemoryImages() {
 
   return (
     <div>
-      {images.length > 0 && <Carousel images={images} />}
+      {images.length > 0 && (
+        <div>
+          <Carousel images={images} imageHeight="24rem" />
+          <div className="flex justify-end mt-2 mr-4 gap-3">
+            <div>
+              <Modal>
+                <Modal.Open open="imagesOnModal">
+                  <IconContext.Provider value={{ size: "1.5rem" }}>
+                    <HiArrowsPointingOut />
+                  </IconContext.Provider>
+                </Modal.Open>
+                <Modal.Window open="imagesOnModal">
+                  <Carousel images={images} imageHeight="40rem" />
+                </Modal.Window>
+              </Modal>
+            </div>
+            <div>
+              <Modal>
+                <Modal.Open open="deleteImage">
+                  <IconContext.Provider value={{ size: "1.5rem" }}>
+                    <HiOutlineTrash />
+                  </IconContext.Provider>
+                </Modal.Open>
+                <Modal.Window open="deleteImage">
+                  <div className="flex flex-row gap-2 justify-center">
+                    {images.map((image, i) => (
+                      <div
+                        key={data[i].id}
+                        className="w-[20%] flex justify-center flex-col"
+                      >
+                        <img src={image} className="object-fit h-[80%]" />
+                        <div className="flex justify-center mt-3">
+                          <Button
+                            btnName="Delete"
+                            style="red"
+                            size="regular"
+                            onClick={() =>
+                              deleteMemoryImage(
+                                user.id + "/" + memoryId + "/" + data[i].name
+                              )
+                            }
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </Modal.Window>
+              </Modal>
+            </div>
+          </div>
+        </div>
+      )}
 
-      {images.length < 6 && (
+      {images.length < 5 && (
         <Form onSubmit={handleSubmit(onSubmit)}>
           <FormRow label=" Add Images" error={errors?.memoryImages?.message}>
             <input

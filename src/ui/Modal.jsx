@@ -39,7 +39,7 @@ function Window({ children, open: windowsName }) {
   return createPortal(
     <div className="absolute top-0 left-0 bottom-0 right-0 flex justify-center items-center  w-full h-full z-50 m-0 backdrop-blur-md">
       <div
-        className="flex flex-col dark:bg-neutral-300  rounded-lg  justify-center  w-[50%] bg-neutral-300"
+        className="flex flex-col dark:bg-neutral-300  rounded-lg  justify-center  w-[50%] bg-neutral-300 "
         ref={ref}
       >
         <div className="flex justify-end  mb-1">
@@ -53,7 +53,7 @@ function Window({ children, open: windowsName }) {
             style="iconic"
           />
         </div>
-        <div className="px-4">{children}</div>
+        <div className="px-4 ">{children}</div>
       </div>
     </div>,
     document.body

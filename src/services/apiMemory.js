@@ -92,3 +92,14 @@ export async function getMemoryImages(folder, path) {
 
   return data;
 }
+
+export async function deleteMemoryImage(path) {
+  const { data, error } = await supabase.storage.from("images").remove([path]);
+
+  if (error)
+    throw new Error(
+      `An error occured during deleting image. Error:${error.message}`
+    );
+
+  return data;
+}
