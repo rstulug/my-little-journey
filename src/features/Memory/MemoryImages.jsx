@@ -13,7 +13,7 @@ import Carousel from "../../ui/Carousel";
 import { Modal } from "../../ui/Modal";
 import { HiArrowsPointingOut, HiOutlineTrash } from "react-icons/hi2";
 import { IconContext } from "react-icons";
-import ConfirmDelete from "../../ui/ConfirmDelete";
+
 import { useDeleteMemoryImage } from "./useDeleteMemoryImage";
 
 function MemoryImages() {
@@ -25,7 +25,7 @@ function MemoryImages() {
   const { memoryId } = useParams();
   const { data, isLoading } = useGetUserMemoryImages();
   const { insertImages, status } = useInsertMemoryImages();
-  const { deleteMemoryImage, deleteStatus } = useDeleteMemoryImage();
+  const { deleteMemoryImage } = useDeleteMemoryImage();
 
   useEffect(
     function () {
