@@ -1,11 +1,24 @@
-import { Outlet, useOutlet } from "react-router-dom";
+import { Outlet, useNavigate, useOutlet } from "react-router-dom";
 import Footer from "./Footer";
 import Header from "./Header";
 
 import Dashboard from "../pages/Dashboard";
+import { useEffect } from "react";
+import supabase from "../services/supabase";
+import { useUser } from "../features/authentication/useUser";
 
 function AppLayout() {
   const outlet = useOutlet();
+  const navigate = useNavigate();
+  const { user, isLoading } = useUser();
+
+  useEffect(() => {
+    supabase.auth.onAuthStateChange(async (event, session) => {
+      if (event == "PASSWORD_RECOVERY" && user && !isLoading) {
+        navigate("/update-user");
+      }
+    });
+  }, [navigate, isLoading, user]);
 
   return (
     <div
