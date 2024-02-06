@@ -49,3 +49,22 @@ export async function getCurrentUser() {
 
   return data;
 }
+
+export async function forgotPassword(email) {
+  const { data, error } = await supabase.auth.resetPasswordForEmail(email);
+
+  if (error)
+    throw new Error(
+      `An error occured during updating password. Error: ${error.message}`
+    );
+
+  return data;
+}
+
+export async function updateUser(updateObj) {
+  const { data, error } = await supabase.auth.updateUser(updateObj);
+
+  if (error) throw new Error(`An error occured during updating user info`);
+
+  return data;
+}

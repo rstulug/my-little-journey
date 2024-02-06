@@ -5,6 +5,7 @@ import {
   HiOutlineUser,
   HiMiniPencilSquare,
   HiArrowRightOnRectangle,
+  HiOutlineCog6Tooth,
 } from "react-icons/hi2";
 import Quote from "./Quote";
 import { useUser } from "../features/authentication/useUser";
@@ -25,14 +26,22 @@ function Header() {
       </div>
       <div>
         {user && !isLoading ? (
-          <div className="flex justify-center items-center ">
+          <div className="flex justify-center items-center gap-2">
             <Link
               className="text-lg font-semibold text-wrap"
               to={`/user/${user.user_metadata.usernameSlug}`}
             >
               {user.user_metadata.username}
             </Link>
-
+            <Button
+              to="/update-user"
+              title="Update Password"
+              icon={
+                <IconContext.Provider value={{ size: "2rem" }} style="iconic">
+                  <HiOutlineCog6Tooth />
+                </IconContext.Provider>
+              }
+            />
             <Button
               onClick={() => logout()}
               style="iconic"

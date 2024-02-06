@@ -10,6 +10,8 @@ import { Toaster } from "react-hot-toast";
 import UserPage from "./pages/UserPage";
 import MemoryForm from "./features/Memory/MemoryForm";
 import MemoryInfo from "./features/Memory/MemoryInfo";
+import ForgotPassword from "./pages/ForgotPassword";
+import UpdateUser from "./pages/UpdateUser";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +26,14 @@ const router = createBrowserRouter([
       {
         path: "signup",
         element: <SignUp />,
+      },
+      {
+        path: "forgot-password",
+        element: <ForgotPassword />,
+      },
+      {
+        path: "update-user",
+        element: <UpdateUser />,
       },
       {
         path: "user/:usernameSlug",

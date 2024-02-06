@@ -45,21 +45,32 @@ function LoginForm() {
           })}
         />
       </FormRow>
-      <div className="flex justify-end mt-2 gap-4">
-        <Button
-          type="submit"
-          style="green"
-          size="large"
-          btnName="Login"
-          disabled={status.pending}
-        />
-        <Button
-          style="yellow"
-          size="large"
-          btnName="Reset"
-          disabled={status.pending}
-          onClick={() => reset()}
-        />
+      <div className="flex justify-between mt-2 gap-4">
+        <div>
+          <Button
+            btnName="Reset Password"
+            style="blue"
+            size="large"
+            to="/forgot-password"
+          />
+        </div>
+
+        <div className="flex gap-4">
+          <Button
+            type="submit"
+            style="green"
+            size="large"
+            btnName="Login"
+            disabled={status.pending}
+          />
+          <Button
+            style="yellow"
+            size="large"
+            btnName="Reset"
+            disabled={status.pending}
+            onClick={() => reset()}
+          />
+        </div>
       </div>
     </Form>
   );
