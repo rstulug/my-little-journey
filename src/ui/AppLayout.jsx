@@ -14,7 +14,7 @@ function AppLayout() {
 
   useEffect(() => {
     supabase.auth.onAuthStateChange(async (event, session) => {
-      if (event == "PASSWORD_RECOVERY" && user && !isLoading) {
+      if (event == "PASSWORD_RECOVERY") {
         navigate("/update-user");
       }
     });
